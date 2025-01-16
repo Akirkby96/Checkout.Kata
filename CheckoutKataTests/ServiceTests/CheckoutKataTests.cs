@@ -65,7 +65,7 @@ namespace Checkout.Kata.Tests.ServiceTests
             checkout.Scan("A");
             var total = checkout.GetTotalPrice();
 
-            // Assert
+            // Assert - 130 (3A's) + 50 = 180
             total.Should().Be(180);
         }
 
@@ -80,7 +80,7 @@ namespace Checkout.Kata.Tests.ServiceTests
             checkout.Scan("B");
             var total = checkout.GetTotalPrice();
 
-            // Assert
+            // Assert - 50 + 30 = 80
             total.Should().Be(80);
         }
 

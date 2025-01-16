@@ -24,15 +24,13 @@ namespace Checkout.Kata.Services
         /// <param name="item"></param>
         public void Scan(string item)
         {
-            // Check if item is null or empty
             if (string.IsNullOrEmpty(item))
                 throw new ArgumentException("Item cannot be null or empty", nameof(item));
 
-            // Check if we have pricing rules for this item, an item must have a price
             if (!_pricingRules.ContainsKey(item))
                 throw new ArgumentException($"No pricing rule found for item {item}", nameof(item));
 
-            // Initialize counter for this item if it's the first time we're seeing it
+            // Initialize counter for this item if not present
             if (!_scannedItems.ContainsKey(item))
                 _scannedItems[item] = 0;
 
@@ -41,10 +39,9 @@ namespace Checkout.Kata.Services
         }
 
         /// <summary>
-        /// 
+        /// Gets the total price of the scanned items, taking into account any special offers
         /// </summary>
         /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
         public int GetTotalPrice()
         {
             int total = 0;
